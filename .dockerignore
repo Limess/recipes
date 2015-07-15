@@ -1,0 +1,6 @@
+.gitignore
+.dockerignore
+.editorconfig
+.eslintrc
+README.md
+*.sublime-project

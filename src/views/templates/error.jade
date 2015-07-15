@@ -1,0 +1,8 @@
+extends ./layout
+
+block content
+  .error__main
+    h1.error__title An error occured
+    p.error__message #{error.message}
+    if error.stack
+        p.error__stack #{error.stack}

@@ -1,0 +1,10 @@
+mixin recipeItem(recipe)
+  a.recipe__link(href='/recipes/' + recipe.id)
+    div.recipe__item
+      h1.recipe__item__title #{recipe.name}
+      img.recipe__item__picture(src=recipe.images.list alt=recipe.name + ' example')
+      p.recipe__item__ingredients__header  Ingredients
+      ul.recipe__item__ingredients
+        each ingredient in recipe.mainIngredients
+          li.recipe__item__ingredients__item #{ingredient.toUpperCase()}
+      p.recipe__item__cooking-time #{recipe.cookingTime}

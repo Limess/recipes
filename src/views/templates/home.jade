@@ -1,0 +1,11 @@
+extends ./layout
+
+block content
+
+  h1.home__heading Recipes
+  .home__main(role='main')
+    - var n = 0
+    ul
+      while n < 4
+        li= 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet est sed dolor volutpat porttitor. Nulla facilisi. Phasellus mattis et quam ut tempus. Fusce sollicitudin odio efficitur consequat molestie. Cras in sollicitudin enim. Phasellus tempor lectus sem, eu pellentesque mauris lacinia ut. Pellentesque ut erat faucibus, molestie tortor eget, porta neque. Donec quis nulla sed est dignissim tincidunt in id lectus. Praesent nec pretium nibh. Nam pretium mauris in ligula convallis porta.'
+        - n++

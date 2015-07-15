@@ -1,0 +1,16 @@
+include ../mixins/recipe.jade
+include ../mixins/recipeItem.jade
+
+doctype html
+html
+  head
+    title Recipes - #{title}
+    include ./head.jade
+  body
+    block body
+      include ./navigation.jade
+      .page__container
+        block content
+    footer
+      include ./footer.jade
+    include ./scripts.jade

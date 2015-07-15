@@ -1,0 +1,8 @@
+mixin recipe(recipe)
+  article.recipe
+    h1.recipe__title #{recipe.name}
+    img.recipe__picture(src=recipe.images.main alt=recipe.name + ' example')
+    ul.recipe__item__ingredients
+      each ingredient in recipe.mainIngredients
+        li.recipe__ingredients__item #{ingredient}
+    p.recipe__cooking-time #{recipe.cookingTime}
