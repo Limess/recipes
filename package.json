@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "babel-node recipes.js",
+    "start": "node recipes.js",
     "test": "mocha --harmony"
   },
   "dependencies": {
