@@ -1,3 +1,15 @@
-link(rel='stylesheet', href='/styles/reset.css')
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+//- styles in the before JS and content as they're blocking and we don't want to render
+//- markup without styles
+
+//- we would use stylesheet reset here if not using bootstrap which comes with one
+//- link(rel='stylesheet' href='/styles/reset.css')
+
+//- Include bootstrap from CDN. Yes I know, bootstrap - we'll just use this as a basis
 link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
-link(rel='stylesheet', href='/styles/main.css')
+link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css")
+link(rel='stylesheet' href='/styles/main.css')
+script window.recipes = window.recipes || {};
+

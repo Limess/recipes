@@ -8,10 +8,23 @@
 				"thyme",
 				"lemon"
 			],
+      "ingredients": [
+        {
+          "ingredient": "Chicken Breasts",
+          "quantity": "4"
+        },
+        {
+          "ingredient": "Thyme",
+          "quantity": "1 tsp"
+        },
+        {
+          "ingredient": "Lemon",
+          "quantity": "1"
+        }
+      ],
 			"preparationTime": "1800",
 			"images": {
-        "main": "lemon_chicken_main.png",
-        "list": "lemon_chicken_list.png"
+        "main": "lemon_chicken.png"
       }
 		},
 		{
@@ -24,8 +37,7 @@
 			],
 			"preparationTime": "1800",
 	     "images": {
-        "main": "beef_stroganoff_main.png",
-        "list": "beef_stroganoff_list.png"
+        "main": "beef_stroganoff.png"
       }
 		},
 		{
@@ -34,12 +46,11 @@
 			"mainIngredients": [
 				"lettuce",
 				"croutons",
-				"paresan"
+				"parmesan"
 			],
 			"preparationTime": "1800",
 			"images": {
-        "main": "caesar_salad_main.png",
-        "list": "caesar_salad_list.png"
+        "main": "caesar_salad.png"
       }
 		}
 	]

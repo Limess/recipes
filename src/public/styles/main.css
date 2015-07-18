@@ -1,0 +1,126 @@
+/*  Here we use a single CSS file.
+    Given more time we'd likely use SASS or another pre-processer
+    to concatenate separated files such as:
+    _header.css
+    _recipe.css
+    _recipes.css
+    _typography.css
+    _footer.css
+    _navigation.css
+    _breakpoints.css
+    using a single point of entry and imports
+*/
+
+/*  We use BEM here to reduce CSS specificity and allow easy overrides by adding
+    modifier classes as well as the basic block/element classes.
+    When using a post-processor we could also use placeholders to share styles between say
+    recipes and recipeItems where there is likely shared style
+*/
+
+/* BASE STYLES */
+
+/* set the font-size on the root so we can use REM elsewhere */
+html {
+  font-size: 16px;
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  background-color: #00C844;
+  margin-bottom: 100px;
+}
+
+.home,
+.recipe,
+.recipes,
+.login,
+.profile,
+.register,
+.error {
+  background-color: #FFFFFF;
+  margin-top: 35px;
+  margin-bottom: 50px;
+  min-width: 290px;
+  padding: 25px;
+  border-radius: 5px;
+}
+
+.home__heading,
+.recipe__heading,
+.recipes__heading,
+.login__heading,
+.profile__heading,
+.register__heading,
+.error__heading {
+  padding-bottom: 15px;
+}
+
+/* TYPOGRAPHY */
+
+/* ERROR PAGES */
+
+/* FORMS */
+
+
+
+/* NAVIGATION */
+
+.navigation {
+  background-color: #FF8300;
+  margin-bottom: 15px;
+}
+
+.footer,
+.navigation {
+  min-width: 320px;
+}
+
+/* FOOTER */
+
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: #FF8300;
+  height: 100px;
+  width: 100%;
+}
+
+.footer__built-by {
+  position: absolute;
+  text-align: center;
+  bottom: 33px;
+  width: 100%;
+}
+
+/* RECIPES */
+
+.recipe,
+.recipe-item {
+  color: #000000;
+}
+
+.recipe-item {
+  margin-bottom: 20px;
+}
+
+.recipe-item__ingredients-item {
+  text-transform: capitalize;
+}
+
+.recipe-item__link {
+  color: #000000;
+}
+
+.recipe-item__link:hover {
+  text-decoration: none;
+  color: #000000;
+}
+
+
+/* RECIPE */
+
+.recipe {
+  padding: 20px 0;
+}

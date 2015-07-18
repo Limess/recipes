@@ -1,0 +1,22 @@
+extends ./layout
+
+block content
+
+  +page("login", "Login")
+    form.login__form.form-horizontal.col-xs-12(action="/login", method="post")
+      .form-group.login__form-field
+        label.col-sm-3.control-label Username:
+        .col-sm-6
+          input.form-control(type="text", placeholder="Username", name="userName")
+      .form-group.login__form-field
+        label.col-sm-3.control-label Password:
+        .col-sm-6
+          input.form-control(type="password", placeholder="Password", name="password")
+      .form-group
+        .col-sm-offset-3.col-sm-6
+          button.btn.btn-default.login__submit(type="submit") Login
+    a.login__register.col-sm-offset-3.col-sm-6(href="/register") New and need an acccount? Register
+
+
+block scripts
+  script(src="/scripts/authentication.js")

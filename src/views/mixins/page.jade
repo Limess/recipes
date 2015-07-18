@@ -1,0 +1,6 @@
+mixin page(page, title)
+  - headingClass = page + '__heading'
+  div(class=[page, "col-md-offset-2", "col-md-8", "clearfix"], role='main')
+    if title
+      h1(class=headingClass) #{title}
+    block

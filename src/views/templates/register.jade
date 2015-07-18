@@ -1,0 +1,26 @@
+extends ./layout
+
+block content
+
+  +page("register", "Register")
+    if errorMessage
+      p.register__error-message #{errorMessage}
+    form.register__form.form-horizontal.col-xs-12(action="/register", method="post")
+      .form-group.register__form-field
+        label.col-sm-3.control-label Username:
+        .col-sm-6
+          input.form-control(type="text", placeholder="Username", name="userName")
+      .form-group.register__form-field
+        label.col-sm-3.control-label Password:
+        .col-sm-6
+          input.form-control(type="password", placeholder="Password", name="password")
+      .form-group.register__form-field
+        label.col-sm-3.control-label Repeat Password:
+        .col-sm-6
+          input.form-control(type="password", placeholder="Password", name="passwordRepeat")
+      .form-group
+        .col-sm-offset-3.col-sm-6
+          button.btn.btn-default.register__submit(type="submit") Register
+
+block scripts
+  script(src="/scripts/authentication.js")

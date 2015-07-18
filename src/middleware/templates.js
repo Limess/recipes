@@ -6,9 +6,9 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 
 const templateDir = path.join(__dirname, '../views/templates');
 
-module.exports = () => {
+module.exports = () =>
     // use jade middleware for templating
-  return jade.middleware({
+  jade.middleware({
     viewPath: templateDir,
     debug: isDevelopment,
     compileDebug: isDevelopment,
@@ -17,6 +17,5 @@ module.exports = () => {
     // locals: global_locals_for_all_pages,
     basedir: templateDir,
     helperPath: []
-  });
-};
+  })
 

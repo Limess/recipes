@@ -1,8 +1,14 @@
+//- I'm not hugely familiar with jade syntax, in say handlebars I'd helpers to achieve the same
+//- effect of storing markup in a component and possibly re-using it client/server side
 mixin recipe(recipe)
-  article.recipe
-    h1.recipe__title #{recipe.name}
-    img.recipe__picture(src=recipe.images.main alt=recipe.name + ' example')
-    ul.recipe__item__ingredients
+  img.recipe__picture(src=recipe.images.main alt=recipe.name + ' example')
+  h1.recipe__title #{recipe.name}
+  p.recipe-item__ingredients-header Ingredients:
+  ul.recipe__ingredients
+    if recipe.ingredients
+      each item in recipe.ingredients
+        li.recipe__ingredients-item #{item.quantity} #{item.ingredient}
+    else
       each ingredient in recipe.mainIngredients
-        li.recipe__ingredients__item #{ingredient}
-    p.recipe__cooking-time #{recipe.cookingTime}
+        li.recipe_ingredients-item--main #{ingredient}
+  p.recipe__cooking-time Time to cook: #{recipe.preparationTimeString}

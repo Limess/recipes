@@ -2,8 +2,7 @@ extends ./layout
 
 block content
 
-  h1.home__heading Recipes
-  .home__main(role='main')
+  +page("home", "Recipes")
     - var n = 0
     ul
       while n < 4

@@ -2,11 +2,10 @@ extends ./layout
 
 block content
 
-  h1.home__heading Recipes
-    .recipes__main(role='main')
-      if recipes
-        each recipe in recipes
-          +recipeItem(recipe)
-      else
-        p.recipes__non-available Sorry, we currently have no recipes for you
+  +page("recipes", "Recipes")
+    if recipes
+      each recipe in recipes
+        +recipeItem(recipe)
+    else
+      p.recipes__non-available ${emptyMessage}
 

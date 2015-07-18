@@ -9,6 +9,7 @@ RUN USER="node" && \
 	echo "$USER:password" | chpasswd
 
 # Install base packages
+# Set noninteractive front end but don't set as ENV as we don't want it in the container
 RUN DEBIAN_FRONTEND=noninteractive && \
 	apt-get update && \
 	apt-get install -y \
@@ -16,6 +17,7 @@ RUN DEBIAN_FRONTEND=noninteractive && \
 	tar \
 	wget && \
 	apt-get clean && \
+# Cleanup install files to save layer space
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV IOJS_VERSION 2.3.3
@@ -39,12 +41,15 @@ RUN MODULES="local" && \
 
 ENV PATH $PATH:/opt/iojs/bin
 
+# Update NPM
 RUN npm install -g npm@$NPM_VERSION
 
+# Copy our app (do this last so as to not break cache)
 COPY . /home/node
 
 EXPOSE 5000
 
-ENTRYPOINT ["iojs"]
+# Entrypoint commands will go to iojs prompt by default eg our default command runs /opt/iojs/bin/node /home/node/recipes.js
+ENTRYPOINT ["node"]
 
-CMD ["/home/node/src/app.js"]
+CMD ["/home/node/recipes.js"]

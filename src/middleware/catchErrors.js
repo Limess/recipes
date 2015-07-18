@@ -2,15 +2,15 @@
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 
-module.exports = () => {
-  return function* catchErrors(next) {
+module.exports = () =>
+  function* catchErrors(next) {
     try {
       // yield control up the chain
       yield next;
       // if anywhere in the chain an unhandled error occurs,
       // render the error template to the client
     } catch (error) {
-      console.log('Got error: ' + error);
+      console.log('Got error: ' + error.stack);
       this.status = error.statusCode || 500;
       error.statusCode = this.status
 
@@ -27,6 +27,5 @@ module.exports = () => {
         error
       });
     }
-  };
-};
+  }
 

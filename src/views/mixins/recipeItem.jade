@@ -1,10 +1,10 @@
 mixin recipeItem(recipe)
-  a.recipe__link(href='/recipes/' + recipe.id)
-    div.recipe__item
-      h1.recipe__item__title #{recipe.name}
-      img.recipe__item__picture(src=recipe.images.list alt=recipe.name + ' example')
-      p.recipe__item__ingredients__header  Ingredients
-      ul.recipe__item__ingredients
+  div(class=["recipe-item", "col-sm-6"])
+    a.recipe-item__link(href='/recipes/' + recipe.id).clearfix
+      img.recipe-item__picture(src=recipe.images.main alt=recipe.name + ' example')
+      h2.recipe-item__title #{recipe.name}
+      p.recipe-item__cooking-time Time to Cook: #{recipe.preparationTimeString}
+      p.recipe-item__ingredients-header Ingredients
+      ul.recipe-item__ingredients
         each ingredient in recipe.mainIngredients
-          li.recipe__item__ingredients__item #{ingredient.toUpperCase()}
-      p.recipe__item__cooking-time #{recipe.cookingTime}
+          li.recipe-item__ingredients-item #{ingredient}
