@@ -12,20 +12,20 @@ module.exports = () =>
     } catch (error) {
       console.log('Got error: ' + error.stack);
       this.status = error.statusCode || 500;
-      error.statusCode = this.status
+      error.statusCode = this.status;
 
       // only render the stack to the client in development (expensive operation + exposes code)
       // pretty prints the stack
-      let stack = isDevelopment ? JSON.stringify(error.stack, null, 2) : undefined;
-      error = {
+      const stack = isDevelopment ? JSON.stringify(error.stack, null, 2) : undefined;
+      const err = {
         message: error.message,
         stack
-      }
+      };
 
-      return this.render('error', {
+      yield this.render('error', {
         title: 'Oops, something bad happened. Sorry about that.',
-        error
+        error: err
       });
     }
-  }
+  };
 

@@ -1,3 +1,4 @@
+// Was going to use client side ajax calls to enhance server side calls, left in for demonstration
 window.recipes.dom = (function(document, $) {
 
   'use strict';

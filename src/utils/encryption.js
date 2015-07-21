@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const Promise = require('bluebird');
 const bcrypt = Promise.promisifyAll(require('bcrypt'));
@@ -8,7 +8,7 @@ function hashPassword(password) {
   .then(salt => bcrypt.hashAsync(password, salt))
   .then(hash => hash)
   .catch(err => {
-    throw error
+    throw err;
   });
 }
 
@@ -22,4 +22,4 @@ function checkPassword(password, hash) {
 module.exports = {
   hashPassword,
   checkPassword
-}
+};

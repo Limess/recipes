@@ -4,41 +4,12 @@ nav.navbar.navbar-default.navbar-inverse(role='navigation')
     collapse.navbar-collapse
       ul.navigation__left-list.nav.navbar-nav(, role='menubar', id="bs-example-navbar-collapse-1")
         li.navigation__list-item
-          a.navigation__link(href='/' role='menuitem') Home
-
-        li.navigation__list-item
           a.navigation__link(href='/recipes' role='menuitem') Recipes
 
-        li.navigation__list-item
-          a.navigation__link(href='/about' role='menuitem') About
       ul.navigation__right-list.nav.navbar-nav.navbar-right(role='menubar')
         li.navigation__list-item
-          a.navigation__link(href='/login' role='menuitem') Login/Register
-      form.navbar-form.navbar-right(role='search')
-        .form-group
-          input.form-control(type='text', placeholder='Search')
-        button.btn.btn-default(type='submit') Submit
-
-//- nav.navigation(class=["col-md-12", "navbar navbar-default"], role='navigation')
-//-   .container-fluid
-
-//-     .navbar-header
-//-       button(type="button", class=["navbar-toggle collapsed"], data-toggle="collapse", data-target="#bs-example-navbar-collapse-1")
-//-         span.sr-only
-//-         span.icon-bar
-//-         span.icon-bar
-//-         span.icon-bar
-//-       a.navbar-brand(href="#") brand
-
-
-//-     .collapse.navbar-collapse
-
-//-       ul.navigation__left-list.nav.navbar-nav(, role='menubar', id="bs-example-navbar-collapse-1")
-//-         li.navigation__list-item
-//-           a.navigation__link(href='/' role='menuitem') Home
-
-//-         li.navigation__list-item
-//-           a.navigation__link(href='/recipes' role='menuitem') Recipes
-
-//-         li.navigation__list-item
-//-           a.navigation__link(href='/about' role='menuitem') About
+          - showProfile = isAuthorised && userName
+          if showProfile
+            a.navigation__link(href='/profile' role='menuitem') Profile
+          else
+            a.navigation__link(href='/login' role='menuitem') Login/Register

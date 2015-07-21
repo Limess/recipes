@@ -1,7 +1,7 @@
 //- I'm not hugely familiar with jade syntax, in say handlebars I'd helpers to achieve the same
 //- effect of storing markup in a component and possibly re-using it client/server side
 mixin recipe(recipe)
-  img.recipe__picture(src=recipe.images.main alt=recipe.name + ' example')
+  img.recipe__picture(src='/image/recipes/' + recipe.images.main alt=recipe.name + ' example')
   h1.recipe__title #{recipe.name}
   p.recipe-item__ingredients-header Ingredients:
   ul.recipe__ingredients
@@ -12,3 +12,10 @@ mixin recipe(recipe)
       each ingredient in recipe.mainIngredients
         li.recipe_ingredients-item--main #{ingredient}
   p.recipe__cooking-time Time to cook: #{recipe.preparationTimeString}
+  //- don't need to know if the user is logged in here, if they're not they can register and star later anyway
+  if recipe.isStarred
+    p.recipe__star Changed your mind? Then&nbsp;
+      a.recipe__star-link(href='/recipes/' + recipe.id + '/unstar') unstar this.
+  else
+    p.recipe__star Like this? Then&nbsp;
+      a.recipe__star-link(href='/recipes/' + recipe.id + '/star') star it for later.

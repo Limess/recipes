@@ -31,7 +31,6 @@ body {
   margin-bottom: 100px;
 }
 
-.home,
 .recipe,
 .recipes,
 .login,
@@ -46,7 +45,6 @@ body {
   border-radius: 5px;
 }
 
-.home__heading,
 .recipe__heading,
 .recipes__heading,
 .login__heading,
@@ -101,6 +99,11 @@ body {
   color: #000000;
 }
 
+.recipe-item__picture,
+.recipe__picture {
+  width: 100%;
+}
+
 .recipe-item {
   margin-bottom: 20px;
 }
@@ -116,6 +119,10 @@ body {
 .recipe-item__link:hover {
   text-decoration: none;
   color: #000000;
+}
+
+.recipes__pagination-controls {
+  text-align: center;
 }
 
 

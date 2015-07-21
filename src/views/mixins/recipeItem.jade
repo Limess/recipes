@@ -1,7 +1,7 @@
 mixin recipeItem(recipe)
   div(class=["recipe-item", "col-sm-6"])
     a.recipe-item__link(href='/recipes/' + recipe.id).clearfix
-      img.recipe-item__picture(src=recipe.images.main alt=recipe.name + ' example')
+      img.recipe-item__picture(src='/image/recipes/' + recipe.images.main alt=recipe.name + ' example')
       h2.recipe-item__title #{recipe.name}
       p.recipe-item__cooking-time Time to Cook: #{recipe.preparationTimeString}
       p.recipe-item__ingredients-header Ingredients

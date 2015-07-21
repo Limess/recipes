@@ -6,6 +6,13 @@ block content
     if recipes
       each recipe in recipes
         +recipeItem(recipe)
+      if pageNumbers > 1
+        div.recipes__pagination-controls
+          span Page&nbsp;
+          - for (var pageNumber = 1; pageNumber < pageNumbers ; ++pageNumber)
+            a.recipes__pagination(href='/recipes?page=' + pageNumber)= pageNumber
+            span ,&nbsp;
+          a.recipes__pagination(href='/recipes?page=' + pageNumbers) #{pageNumbers}
     else
-      p.recipes__non-available ${emptyMessage}
+      p.recipes__non-available #{emptyMessage}
 

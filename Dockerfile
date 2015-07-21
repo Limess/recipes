@@ -6,6 +6,8 @@ MAINTAINER Charlie Briggs "charliebriggs@gmail.com"
 RUN USER="node" && \
 	adduser --disabled-password --gecos '' $USER && \
 	usermod -a -G sudo $USER && \
+  mkdir -p /home/node && \
+  chown -R node:node /home/node && \
 	echo "$USER:password" | chpasswd
 
 # Install base packages
@@ -15,13 +17,16 @@ RUN DEBIAN_FRONTEND=noninteractive && \
 	apt-get install -y \
 	build-essential \
 	tar \
+  python \
 	wget && \
 	apt-get clean && \
 # Cleanup install files to save layer space
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# Versions here so as not to break cache when bumping node versions
 ENV IOJS_VERSION 2.3.3
 ENV NPM_VERSION 2.13.0
+ENV NODE_ENV production
 
 # Install IO.js
 RUN mkdir /opt/iojs && \
@@ -47,9 +52,14 @@ RUN npm install -g npm@$NPM_VERSION
 # Copy our app (do this last so as to not break cache)
 COPY . /home/node
 
+WORKDIR /home/node
+
+# I'd normally forgoe this npm install and have it performed on the client before copying to docker, but I've left it for convenience
+RUN npm install
+
 EXPOSE 5000
 
 # Entrypoint commands will go to iojs prompt by default eg our default command runs /opt/iojs/bin/node /home/node/recipes.js
-ENTRYPOINT ["node"]
+ENTRYPOINT ["/opt/iojs/bin/node"]
 
-CMD ["/home/node/recipes.js"]
+CMD ["recipes.js"]

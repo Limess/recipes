@@ -10,6 +10,7 @@ const path = require('path');
 const routes = require('./routes.js');
 const catchNotFound = require('./middleware/catchNotFound');
 const catchErrors = require('./middleware/catchErrors');
+const checkUser = require('./middleware/checkUser');
 const templates = require('./middleware/templates');
 const validateToken = require('./middleware/validateToken');
 const app = module.exports = koa();
@@ -32,12 +33,15 @@ app.use(bodyParser());
 // Template configuration
 app.use(templates());
 
-// Not-found and internal server error handlers
-app.use(catchNotFound());
-app.use(catchErrors());
+// Checks the users userName cookie validity
+app.use(checkUser());
 
 // Validate JWT token if it exists and add flag to context
 app.use(validateToken());
+
+// Not-found and internal server error handlers
+app.use(catchErrors());
+app.use(catchNotFound());
 
 // Define routes
 app.use(routes());

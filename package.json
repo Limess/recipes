@@ -4,27 +4,27 @@
   "private": true,
   "scripts": {
     "start": "node recipes.js",
-    "test": "mocha --harmony"
+    "lint": "eslint src/**/*.js"
   },
   "dependencies": {
     "babel": "^5.6.14",
+    "bcrypt": "^0.8.3",
     "bluebird": "^2.9.34",
-    "bunyan": "^1.4.0",
     "config": "^1.14.0",
+    "jade": "^1.11.0",
     "js-yaml": "^3.3.1",
     "jsonwebtoken": "^5.0.4",
     "koa": "^0.6.0",
     "koa-body-parser": "^1.1.2",
     "koa-compress": "^1.0.6",
-    "koa-jade": "^1.1.0",
     "koa-logger": "^1.2.0",
     "koa-response-time": "^1.0.2",
     "koa-router": "^5.1.2",
-    "koa-static": "^1.4.5"
+    "koa-static": "^1.4.5",
+    "koa-views": "^3.1.0"
   },
   "devDependencies": {
-    "eslint": "^0.24.1",
-    "mocha": "^1.18.2",
-    "supertest": "^0.12.1"
+    "babel-eslint": "^3.1.23",
+    "eslint": "^0.24.1"
   }
 }

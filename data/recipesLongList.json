@@ -1,13 +1,13 @@
 {
-	"recipes": [
-		{
-			"id": "56826ad2-6c3a-4d81-ad5b-aea571ca7e64",
-			"name": "Lemon Chicken",
-			"mainIngredients": [
-				"chicken",
-				"thyme",
-				"lemon"
-			],
+  "recipes": [
+    {
+      "id": "56826ad2-6c3a-4d81-ad5b-aea571ca7e64",
+      "name": "Lemon Chicken",
+      "mainIngredients": [
+        "chicken",
+        "thyme",
+        "lemon"
+      ],
       "ingredients": [
         {
           "ingredient": "Chicken Breasts",
@@ -22,37 +22,37 @@
           "quantity": "1"
         }
       ],
-			"preparationTime": "1800",
-			"images": {
+      "preparationTime": "1800",
+      "images": {
         "main": "lemon_chicken.jpg"
       }
-		},
-		{
-			"id": "2e777c2b-7989-4a22-82c4-a410896fe68f",
-			"name": "Beef Stroganoff",
-			"mainIngredients": [
-				"beef",
-				"mustard",
-				"mushrooms"
-			],
-			"preparationTime": "1800",
-	     "images": {
+    },
+    {
+      "id": "2e777c2b-7989-4a22-82c4-a410896fe68f",
+      "name": "Beef Stroganoff",
+      "mainIngredients": [
+        "beef",
+        "mustard",
+        "mushrooms"
+      ],
+      "preparationTime": "1800",
+       "images": {
         "main": "beef_stroganoff.jpg"
       }
-		},
-		{
-			"id": "68f0032e-4dad-43a3-90a3-cc6340d2fe1e",
-			"name": "Caesar Salad",
-			"mainIngredients": [
-				"lettuce",
-				"croutons",
-				"parmesan"
-			],
-			"preparationTime": "1800",
-			"images": {
+    },
+    {
+      "id": "68f0032e-4dad-43a3-90a3-cc6340d2fe1e",
+      "name": "Caesar Salad",
+      "mainIngredients": [
+        "lettuce",
+        "croutons",
+        "parmesan"
+      ],
+      "preparationTime": "1800",
+      "images": {
         "main": "caesar_salad.jpg"
       }
-		},
+    },
     {
       "id": "56826ad2-6c3a-4d81-ad5b-aea571ca7e64",
       "name": "Lemon Chicken",
@@ -212,5 +212,5 @@
         "main": "caesar_salad.jpg"
       }
     }
-	]
+  ]
 }

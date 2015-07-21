@@ -1,52 +1,71 @@
 'use strict';
 
 // use flat files dir, can be changed per environment set by NODE_ENV to test with fixtures
-const recipeRepository = require('../repositories/recipeRepository')
-const userRepository = require('../repositories/userRepository')
+const recipeRepository = require('../repositories/recipeRepository');
+const userRepository = require('../repositories/userRepository');
 // we use promises on this layer, could use generators throughout but it's an approach I'm used to
 const Promise = require('bluebird');
 
-// Get the recipe, throw a generic error if non-exist, would likely extend this error normally and
-// handle it in the layer above depending on interpretation
-function getRecipe(recipeId) {
-  // No date processing to be done here so just return from repository
-  return recipeRepository.getRecipe(recipeId);
+function getRecipe(userName, recipeId) {
+  // need to add whether the recipe is starred so we can display the star button
+  // accordingly
+  function getUserOrNull() {
+    return userRepository.getUser(userName)
+    .then(user => user)
+    .catch(() => null);
+  }
+  return Promise.join(
+    getUserOrNull(),
+    recipeRepository.getRecipe(recipeId),
+    (user, recipe) => {
+      if (user && user.starredRecipes && user.starredRecipes.length > 0) {
+        const matchingRecipe = user.starredRecipes.find(starredRecipe =>
+          starredRecipe === recipe.id
+        );
+        if (matchingRecipe) {
+          recipe.isStarred = true;
+        }
+      }
+      return recipe;
+    });
 }
 
 function getRecipes() {
   // No date processing to be done here so just return
-  const recipes = recipeRepository.getRecipes();
-  return Promise.resolve(recipes);
+  return recipeRepository.getRecipes().then(recipes => {
+    if (recipes.length > 0) {
+      return recipes;
+    }
+    return null;
+  });
 }
 
 function getStarredRecipesForUserName(userName) {
-  let recipes = {};
-  const user = userRepository.getUser(userName);
-  if (!(user.starredRecipes && user.starredRecipes == {})) {
-    recipes = recipeRepository.getRecipes();
-    recipes = mapRecipeIdsToRecipes(recipes, user.starredRecipes)
-  }
-  return Promise.resolve(recipes);
+  return userRepository.getUser(userName).then(getStarredRecipesForUser);
 }
 
-function mapRecipeIdsToRecipes(recipes, recipeIds) {
+function getStarredRecipesForUser(user) {
+  if (user.starredRecipes && user.starredRecipes.length > 0) {
+    return recipeRepository.getRecipes().then(recipes => {
+      return getRecipesFromRecipeIds(recipes, user.starredRecipes);
+    });
+  }
+  return null;
+}
+
+function getRecipesFromRecipeIds(recipes, recipeIds) {
   return recipeIds.map(function matchRecipes(recipeId) {
-      // map each recipeId to a recipe object
-      recipes.forEach((recipe, index, array) => {
-        if (recipe.id === starredRecipeId) {
-          // if matched remove the recipe from the recipes array
-          recipes = array.splice(i, 1);
-          return recipe;
-        }
+      // map each recipeId to a recipe object, otherwise returns undefined
+      return recipes.find((recipe) => {
+        return recipe.id === recipeId;
       });
-      // in the case that the recipe doesn't exist for whatever reason
-      return null;
     }).filter(function(recipeId) {
-      return recipeId !== null
+      return recipeId;
     });
 }
 
 module.exports = {
 	getRecipe,
-	getRecipes
+	getRecipes,
+  getStarredRecipesForUserName
 };

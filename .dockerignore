@@ -4,3 +4,4 @@
 .eslintrc
 README.md
 *.sublime-project
+node_modules
