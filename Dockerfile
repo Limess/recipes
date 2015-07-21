@@ -59,6 +59,8 @@ RUN npm install
 
 EXPOSE 5000
 
+RUN chmod -R 777 /home/node
+
 # Entrypoint commands will go to iojs prompt by default eg our default command runs /opt/iojs/bin/node /home/node/recipes.js
 ENTRYPOINT ["/opt/iojs/bin/node"]
 
