@@ -5,7 +5,7 @@ Recipes example project.
 Stack:
   * Koa.js
   * File reads/writes backend (allows testing without DB tools etc)
-  * Docker container with IOJS
+  * Docker container with io.js
   * ES6 using babel-node binary 
   * JWT authentication
 
