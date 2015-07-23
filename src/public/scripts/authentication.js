@@ -3,8 +3,8 @@
 
   'use strict';
 
-  dom.delegate('.login__form', 'submit', login);
-  dom.delegate('.register__form', 'submit', register);
+ // dom.delegate('.login__form', 'submit', login);
+ // dom.delegate('.register__form', 'submit', register);
 
   function login(event) {
     event.preventDefault();

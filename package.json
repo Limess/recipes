@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node recipes.js",
+    "start": "node --harmony recipes.js",
     "lint": "eslint src/**/*.js"
   },
   "dependencies": {
